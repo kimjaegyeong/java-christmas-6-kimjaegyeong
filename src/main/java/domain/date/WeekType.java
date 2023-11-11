@@ -2,7 +2,6 @@ package domain.date;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 public enum WeekType {
     WEEKDAY("WEEKDAY",Arrays.asList(DayOfWeek.SUNDAY, DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY,
@@ -15,6 +14,10 @@ public enum WeekType {
     private WeekType(String type, List<DayOfWeek> days) {
         this.type = type;
         this.days = days;
+    }
+
+    public String getType(){
+        return type;
     }
 
     public static WeekType contains(DayOfWeek type){
