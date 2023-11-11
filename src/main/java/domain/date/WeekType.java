@@ -27,11 +27,11 @@ public enum WeekType {
     return NOT;
     }
     public static WeekType of(final DayOfWeek day){
-        Optional<WeekType> typeTemp = Arrays.stream(WeekType.values())
+        return Arrays.stream(WeekType.values())
                 .map(weekType -> contains(day))
-                .findFirst();
+                .findFirst().orElse(NOT);
 
-        return typeTemp.get();
+
     }
 
 
