@@ -13,16 +13,22 @@ public enum DayOfWeek {
     NOT("INVALID", 0);
     private final int dayCount;
     private final String week;
+    private final static int ONE_WEEK = 7;
 
     DayOfWeek(String week, int dayCount) {
         this.dayCount = dayCount;
         this.week = week;
     }
-
+    public int getDayCount(){
+        return dayCount;
+    }
+    public String getWeek(){
+        return week;
+    }
 
     public static DayOfWeek of(final int dayCount) {
         return Arrays.stream(DayOfWeek.values())
-                .filter(dayOfWeek -> (dayOfWeek.dayCount) % dayCount == 0)
+                .filter(dayOfWeek ->dayCount % ONE_WEEK == dayOfWeek.dayCount)
                 .findFirst()
                 .orElse(DayOfWeek.NOT);
     }
