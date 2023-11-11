@@ -1,7 +1,7 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.messages.ErrorMessages;
+import messages.ErrorMessages;
 import utils.Converter;
 
 public class InputView {

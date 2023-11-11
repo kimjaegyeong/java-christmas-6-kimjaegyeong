@@ -1,4 +1,4 @@
-package christmas.messages;
+package messages;
 
 public class BillMessage {
     private final static String ORDER_MENU_MESSAGE = "주문 메뉴";

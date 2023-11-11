@@ -1,4 +1,4 @@
-package christmas.messages;
+package messages;
 
 public class InformationMassage {
     private final static String WELCOME_MESSAGE = "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.";
