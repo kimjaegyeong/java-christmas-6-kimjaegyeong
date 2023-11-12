@@ -7,5 +7,4 @@ public interface Event {
 
     public int getTotalBenefits();
 
-    public List<Event> getEvents();
 }

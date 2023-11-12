@@ -13,8 +13,4 @@ public class giveawayEvent implements Event{
         return 0;
     }
 
-    @Override
-    public List<Event> getEvents() {
-        return null;
-    }
 }

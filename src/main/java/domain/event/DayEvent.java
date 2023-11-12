@@ -38,9 +38,4 @@ public class DayEvent implements Event {
         return 0;
     }
 
-    @Override
-    public List<Event> getEvents() {
-        return null;
-    }
-
 }

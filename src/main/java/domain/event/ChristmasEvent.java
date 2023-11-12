@@ -33,8 +33,4 @@ public class ChristmasEvent implements Event {
         return 0;
     }
 
-    @Override
-    public List<Event> getEvents() {
-        return null;
-    }
 }
