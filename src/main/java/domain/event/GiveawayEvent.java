@@ -1,6 +1,25 @@
 package domain.event;
 
-public class GiveawayEvent implements Event{
+import domain.Menu;
+
+public class GiveawayEvent implements Event {
+    private final static int LIMIT_PRICE = 120000;
+    private final static String GIVEAWAY = "샴페인";
+    private final static Menu GIVEAWAY_MENU = Menu.of(GIVEAWAY);
+
+    private GiveawayEvent() {
+    }
+
+    public GiveawayEvent create(int totalOrderPrice) {
+        if (containsEvent(totalOrderPrice)) {
+            return new GiveawayEvent();
+        }
+        return null;
+    }
+
+    public boolean containsEvent(int totalOrderPrice) {
+        return totalOrderPrice >= LIMIT_PRICE;
+    }
 
     @Override
     public int getTotalDiscount() {
@@ -9,7 +28,7 @@ public class GiveawayEvent implements Event{
 
     @Override
     public int getTotalBenefits() {
-        return 0;
+        return GIVEAWAY_MENU.getPrice();
     }
 
 }
