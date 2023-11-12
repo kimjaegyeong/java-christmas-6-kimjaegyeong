@@ -1,8 +1,7 @@
 package domain.event;
 
-import java.util.List;
+public class GiveawayEvent implements Event{
 
-public class giveawayEvent implements Event{
     @Override
     public int getTotalDiscount() {
         return 0;
