@@ -1,16 +1,19 @@
 package domain.discount;
 
-import domain.date.Day;
-import domain.OrderSheet;
+public class WeekDiscount implements Discount {
+    private final static int DISCOUNT = 2023;
+    private int discount ;
+    public WeekDiscount(int count) {
+        discount = calculateDiscount(count);
+    }
 
-public class WeekDiscount implements Discount{
     @Override
-    public int getDiscountPrice(OrderSheet order, Day day) {
+    public int getDiscountPrice() {
         return 0;
     }
 
     @Override
-    public void calculateDiscount(OrderSheet order, Day day) {
-
+    public int calculateDiscount(int count) {
+        return DISCOUNT * count;
     }
 }
