@@ -10,14 +10,14 @@ public class GiveawayEvent implements Event {
     private GiveawayEvent() {
     }
 
-    public GiveawayEvent create(int totalOrderPrice) {
+    public static GiveawayEvent create(int totalOrderPrice) {
         if (containsEvent(totalOrderPrice)) {
             return new GiveawayEvent();
         }
         return null;
     }
 
-    public boolean containsEvent(int totalOrderPrice) {
+    public static boolean containsEvent(int totalOrderPrice) {
         return totalOrderPrice >= LIMIT_PRICE;
     }
 
