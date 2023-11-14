@@ -30,11 +30,31 @@ public class OrderMenu {
             putMenu(menu,count);
         }
         overMaxCount();
+        validationImpossibleOrder();
     }
 
+    public void putMenu(Menu menu, int count){
+        menus.put(menu, count);
+    }
+
+    public boolean contains(Menu menu) {
+        return menus.containsKey(menu);
+    }
+
+
+    public int calculateTotalPrice() {
+        int totalPrice = 0;
+
+        for (Map.Entry<Menu, Integer> entry : menus.entrySet()) {
+            Menu menu = entry.getKey();
+            Integer value = entry.getValue();
+            totalPrice = totalPrice + menu.getPrice() * value;
+        }
+        return totalPrice;
+    }
     public void validationImpossibleOrder(){
         if(onlyDrinks()){
-           throw new IllegalArgumentException(ErrorMessages.IMPOSSIBLE_ORDER_ERROR);
+            throw new IllegalArgumentException(ErrorMessages.IMPOSSIBLE_ORDER_ERROR);
         }
     }
     public boolean onlyDrinks(){
@@ -48,14 +68,9 @@ public class OrderMenu {
         return true;
     }
 
-
-    public void putMenu(Menu menu, int count){
-        menus.put(menu, count);
-    }
-
     public void overMaxCount(){
         if(totalCount()>MAX_COUNT){
-            throw  new IllegalArgumentException(ErrorMessages.INVALID_ORDER_ERROR);
+            throw  new IllegalArgumentException(ErrorMessages.OVER_MAX_COUNT);
         }
     }
     public int totalCount(){
@@ -65,24 +80,21 @@ public class OrderMenu {
     }
     private static void invalidCount(int count) {
         if (count> MAX_COUNT) {
-            throw new IllegalArgumentException(ErrorMessages.INVALID_ORDER_ERROR);
+            throw new IllegalArgumentException(ErrorMessages.OVER_MAX_COUNT);
         }
     }
 
     private static void notExistMenu(Menu menu) {
         if (menu == Menu.NOT) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessages.INVALID_ORDER_ERROR);
         }
     }
 
     public void duplicationManu(Menu menu) {
         if (contains(menu)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessages.INVALID_ORDER_ERROR);
         }
 
     }
 
-    public boolean contains(Menu menu) {
-        return menus.containsKey(menu);
-    }
 }
