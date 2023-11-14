@@ -6,7 +6,6 @@ import domain.date.DayOfWeek;
 import domain.date.WeekType;
 import domain.discount.Discount;
 import domain.discount.WeekDiscount;
-import java.util.List;
 
 public class DayEvent implements Event {
     private Discount discount;
@@ -14,7 +13,7 @@ public class DayEvent implements Event {
 
     private final static Category category = Category.DESSERT;
     private DayEvent(OrderSheet orderSheet) {
-        discount = new WeekDiscount(orderSheet.countMenu(category));
+        discount = new WeekDiscount(orderSheet.countMenuIn(category));
     }
 
     public static DayEvent create(OrderSheet orderSheet) {

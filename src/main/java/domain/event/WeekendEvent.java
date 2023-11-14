@@ -13,7 +13,7 @@ public class WeekendEvent implements Event {
     private int count;
     private final static Category category = Category.MAIN;
     public WeekendEvent(OrderSheet orderSheet) {
-        discount = new WeekDiscount(orderSheet.countMenu(category));
+        discount = new WeekDiscount(orderSheet.countMenuIn(category));
     }
     public static WeekendEvent create(OrderSheet orderSheet) {
         if (containsEvent(orderSheet)) {

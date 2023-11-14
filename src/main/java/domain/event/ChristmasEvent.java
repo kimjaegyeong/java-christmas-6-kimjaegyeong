@@ -1,21 +1,22 @@
 package domain.event;
 
-import domain.discount.SpecialDiscount;
+import domain.OrderSheet;
+import domain.discount.ChristmasDiscount;
 import domain.discount.Discount;
-import java.util.List;
 
 public class ChristmasEvent implements Event {
     private static final int START_DATE = 1;
     private static final int END_DATE = 25;
     private Discount discount;
 
-    private ChristmasEvent(int day) {
-        discount = new SpecialDiscount(day);
+    private ChristmasEvent(OrderSheet orderSheet) {
+
+        discount = new ChristmasDiscount(orderSheet.getDay());
     }
 
-    public static ChristmasEvent create(int day){
-        if(containsEvent(day)){
-            return new ChristmasEvent(day);
+    public static ChristmasEvent create(OrderSheet orderSheet){
+        if(containsEvent(orderSheet.getDay())){
+            return new ChristmasEvent(orderSheet);
         }
         return null;
     }

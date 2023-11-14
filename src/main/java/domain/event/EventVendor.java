@@ -8,11 +8,11 @@ public class EventVendor {
     List<Event> events;
     public EventVendor(OrderSheet orderSheet){
         events = new ArrayList<>();
-        put(ChristmasEvent.create(orderSheet.getDay()));
+        put(ChristmasEvent.create(orderSheet));
         put(DayEvent.create(orderSheet));
         put(WeekendEvent.create(orderSheet));
-        put(SpecialEvent.create(orderSheet.getDay()));
-        put(GiveawayEvent.create(orderSheet.getTotalPrice()));
+        put(SpecialEvent.create(orderSheet));
+        put(GiveawayEvent.create(orderSheet));
     }
     public List<Event> getEvents(){
         return events;

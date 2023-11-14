@@ -1,5 +1,6 @@
 package domain.event;
 
+import domain.OrderSheet;
 import domain.date.SpecialStar;
 import domain.discount.Discount;
 import domain.discount.SpecialDiscount;
@@ -12,9 +13,9 @@ public class SpecialEvent implements Event {
         discount = new SpecialDiscount(day);
     }
 
-    public static SpecialEvent create(int day){
-        if(containsEvent(day)){
-            return new SpecialEvent(day);
+    public static SpecialEvent create(OrderSheet orderSheet){
+        if(containsEvent(orderSheet.getDay())){
+            return new SpecialEvent(orderSheet.getDay());
         }
         return null;
     }

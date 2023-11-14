@@ -9,8 +9,8 @@ public class ChristmasDiscount implements Discount {
 
     private int discountPrice;
 
-    public ChristmasDiscount(Day day) {
-        this.discountPrice = calculateDiscount(day.getDay());
+    public ChristmasDiscount(int day) {
+        this.discountPrice = calculateDiscount(day);
     }
 
     @Override
