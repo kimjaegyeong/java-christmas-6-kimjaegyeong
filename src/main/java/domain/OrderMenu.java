@@ -4,6 +4,8 @@ import dto.OrderDTO;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import messages.ErrorMessages;
 
 public class OrderMenu {
     private HashMap<Menu, Integer> menus = new LinkedHashMap();
@@ -21,15 +23,31 @@ public class OrderMenu {
         for (OrderDTO dto : orderDtos) {
             Menu menu = Menu.of(dto.getMenuName());
             int count = dto.getCount();
-
             notExistMenu(menu);
             invalidCount(count);
             duplicationManu(menu);
-            overMaxCount();
 
             putMenu(menu,count);
         }
+        overMaxCount();
     }
+
+    public void validationImpossibleOrder(){
+        if(onlyDrinks()){
+           throw new IllegalArgumentException(ErrorMessages.IMPOSSIBLE_ORDER_ERROR);
+        }
+    }
+    public boolean onlyDrinks(){
+
+        for (Map.Entry<Menu, Integer> entry : menus.entrySet()) {
+            Menu menu = entry.getKey();
+            if(Category.of(menu)!=Category.DRINK){
+                return false;
+            }
+        }
+        return true;
+    }
+
 
     public void putMenu(Menu menu, int count){
         menus.put(menu, count);
@@ -37,7 +55,7 @@ public class OrderMenu {
 
     public void overMaxCount(){
         if(totalCount()>MAX_COUNT){
-            throw  new IllegalArgumentException();
+            throw  new IllegalArgumentException(ErrorMessages.INVALID_ORDER_ERROR);
         }
     }
     public int totalCount(){
@@ -47,7 +65,7 @@ public class OrderMenu {
     }
     private static void invalidCount(int count) {
         if (count> MAX_COUNT) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessages.INVALID_ORDER_ERROR);
         }
     }
 
