@@ -9,7 +9,7 @@ public class WeekDiscount implements Discount {
 
     @Override
     public int getDiscountPrice() {
-        return 0;
+        return discount;
     }
 
     @Override
