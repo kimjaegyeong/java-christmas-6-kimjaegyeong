@@ -1,10 +1,12 @@
 package domain;
 
 public class Giveaway {
-    Menu menu;
+    private final static String GIVEAWAY = "샴페인";
+    private final Menu menu ;
 
-    public Giveaway(Menu menu) {
-        this.menu = menu;
+
+    public Giveaway() {
+        this.menu = Menu.of(GIVEAWAY);
     }
 
     public String getMenu() {

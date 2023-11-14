@@ -1,12 +1,12 @@
 package domain.event;
 
+import domain.Giveaway;
 import domain.Menu;
 import domain.OrderSheet;
 
 public class GiveawayEvent implements Event {
     private final static int LIMIT_PRICE = 120000;
-    private final static String GIVEAWAY = "샴페인";
-    private final static Menu GIVEAWAY_MENU = Menu.of(GIVEAWAY);
+    private final static Giveaway giveaway = new Giveaway();
 
     private GiveawayEvent(OrderSheet orderSheet) {
     }
@@ -29,7 +29,7 @@ public class GiveawayEvent implements Event {
 
     @Override
     public int getTotalBenefits() {
-        return GIVEAWAY_MENU.getPrice();
+        return giveaway.getPrice();
     }
 
 }
