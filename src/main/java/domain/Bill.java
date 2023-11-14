@@ -2,6 +2,7 @@ package domain;
 
 import domain.event.Event;
 import domain.event.EventRepository;
+import domain.event.GiveawayEvent;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
@@ -15,6 +16,18 @@ public class Bill {
 
     }
 
+    public String getGiveaway(){
+        if(hasGiveaway()){
+            return new Giveaway().getMenu();
+        }
+        return null;
+    }
+    public boolean hasGiveaway(){
+        if(eventRepository.getEvents().contains(GiveawayEvent.class)){
+            return true;
+        }
+        return false;
+    }
     public HashMap<Event, Integer> getEventAndBenefits() {
         HashMap<Event, Integer> eventAndBenefits = new LinkedHashMap<>();
         for (Event event : eventRepository.getEvents()) {
