@@ -2,6 +2,8 @@ package domain;
 
 import domain.event.Event;
 import domain.event.EventRepository;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class Bill {
     OrderSheet orderSheet;
@@ -12,25 +14,40 @@ public class Bill {
         this.eventRepository = eventRepository;
 
     }
-    public int getPriceBeforeDiscount(){
-        return orderSheet.getTotalPrice() ;
+
+    public HashMap<Event, Integer> getEventAndBenefits() {
+        HashMap<Event, Integer> eventAndBenefits = new LinkedHashMap<>();
+        for (Event event : eventRepository.getEvents()) {
+            eventAndBenefits.put(event, calculateBenefits(event));
+        }
+        return eventAndBenefits;
     }
 
-    public int getPriceAfterDiscount(EventRepository eventRepository){
-        return orderSheet.getTotalPrice() -  calculateTotalDiscount(eventRepository);
+    public int getPriceBeforeDiscount() {
+        return orderSheet.getTotalPrice();
     }
-    public int calculateTotalDiscount(EventRepository eventRepository){
+
+    public int getPriceAfterDiscount(EventRepository eventRepository) {
+        return orderSheet.getTotalPrice() - calculateTotalDiscount(eventRepository);
+    }
+
+    public int calculateTotalDiscount(EventRepository eventRepository) {
         int totalDiscount = 0;
         for (Event event : eventRepository.getEvents()) {
-            totalDiscount = event.getTotalDiscount() ;
+            totalDiscount = event.getTotalDiscount();
         }
         return totalDiscount;
     }
-    public int calculateTotalBenefits(EventRepository eventRepository) {
+
+    public int totalBenefits(EventRepository eventRepository) {
         int totalBenefits = 0;
         for (Event event : eventRepository.getEvents()) {
-            totalBenefits = event.getTotalDiscount() + event.getTotalBenefits();
+            totalBenefits = totalBenefits + calculateBenefits(event);
         }
         return totalBenefits;
+    }
+
+    public int calculateBenefits(Event event) {
+        return event.getTotalDiscount() + event.getTotalBenefits();
     }
 }
