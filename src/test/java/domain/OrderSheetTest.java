@@ -1,4 +1,4 @@
-package domain.event;
+package domain;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
