@@ -13,6 +13,10 @@ public class OrderSheet {
         this.day = day;
     }
 
+    public HashMap<Menu, Integer> getOrderMenu() {
+        return orderMenu.getOrderMenu();
+    }
+
     public int getDay() {
         return day.getDay();
     }
@@ -35,7 +39,7 @@ public class OrderSheet {
         return false;
     }
 
-    public int getTotalPrice(){
+    public int getTotalPrice() {
         return orderMenu.calculateTotalPrice();
     }
 
