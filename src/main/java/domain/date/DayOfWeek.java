@@ -10,7 +10,7 @@ public enum DayOfWeek {
     FRIDAY("금요일", 1),
     SATURDAY("토요일", 2),
     SUNDAY("일요일", 3),
-    NOT("INVALID", 0);
+    NOT("INVALID", -1);
     private final int dayCount;
     private final String week;
     private final static int ONE_WEEK = 7;
@@ -30,6 +30,6 @@ public enum DayOfWeek {
         return Arrays.stream(DayOfWeek.values())
                 .filter(dayOfWeek ->dayCount % ONE_WEEK == dayOfWeek.dayCount)
                 .findFirst()
-                .orElse(DayOfWeek.NOT);
+                .orElse(DayOfWeek.THURSDAY);
     }
 }
