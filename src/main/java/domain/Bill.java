@@ -16,17 +16,14 @@ public class Bill {
 
     }
 
-    public String getGiveaway(){
+    public Giveaway getGiveaway(){
         if(hasGiveaway()){
-            return new Giveaway().getMenu();
+            return new Giveaway();
         }
         return null;
     }
     public boolean hasGiveaway(){
-        if(eventRepository.getEvents().contains(GiveawayEvent.class)){
-            return true;
-        }
-        return false;
+        return eventRepository.getEvents().stream().anyMatch(event->event.getClass() == GiveawayEvent.class);
     }
     public HashMap<Event, Integer> getEventAndBenefits() {
         HashMap<Event, Integer> eventAndBenefits = new LinkedHashMap<>();
@@ -47,7 +44,7 @@ public class Bill {
     public int calculateTotalDiscount(EventRepository eventRepository) {
         int totalDiscount = 0;
         for (Event event : eventRepository.getEvents()) {
-            totalDiscount = event.getTotalDiscount();
+            totalDiscount = totalDiscount + event.getTotalDiscount();
         }
         return totalDiscount;
     }
