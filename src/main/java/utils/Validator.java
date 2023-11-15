@@ -7,15 +7,16 @@ public class Validator {
         return Converter.splitByDelimiter(input, separator);
     }
 
-    public static void validationMenus(String input, String separator, int count) {
+    public static void validationMenus(String input, String separator, String delimiter, int count) {
         String[] menus = separateMenu(input, separator);
         for (String menu : menus) {
-            validationMenuAndCount(menu, separator, count);
+            validationMenuAndCount(menu, delimiter, count);
         }
     }
 
     public static void validationMenuAndCount(String input, String delimiter, int count) {
         if (invalidDelimiter(input, delimiter, count)) {
+
             throw new IllegalArgumentException(ErrorMessages.INVALID_ORDER_ERROR);
         }
         if (invalidMenuAndCount(input, delimiter)) {
@@ -30,6 +31,7 @@ public class Validator {
     }
 
     public static boolean invalidMenuAndCount(String input, String delimiter) {
+
         String[] inputs = splitMenuAndCount(input,delimiter);
         String menu = inputs[0];
         String count = inputs[1];
@@ -46,10 +48,10 @@ public class Validator {
 
     public static boolean invalidDelimiter(String input, String delimiter, int count) {
         String[] inputs = splitMenuAndCount(input, delimiter);
-        if (inputs.length < count) {
-            return true;
+        if (inputs.length == count) {
+            return false;
         }
-        return false;
+        return true;
     }
 
     public static boolean hasSpace(String input) {
