@@ -3,9 +3,9 @@ package domain;
 import java.util.Arrays;
 
 public enum Badge {
-    STAR("STAR", 5000),
-    TREE("TREE", 10000),
-    SANTA("SANTA", 20000),
+    STAR("별", 5000),
+    TREE("트리", 10000),
+    SANTA("산타", 20000),
     NOT("NOT", 0);
 
     private final String name;
