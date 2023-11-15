@@ -24,6 +24,9 @@ public class OutputView {
             System.out.println(EventMessage.NOT_EXIST);
             return;
         }
+        if(price.equals("0")){
+            return;
+        }
         System.out.print(event + SEPARATOR);
         printEventPrice(price);
     }
