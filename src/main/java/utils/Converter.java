@@ -9,4 +9,5 @@ public class Converter {
     public static int stringToInteger(String input){
         return Integer.parseInt(input);
     }
+    public static String IntegerToString(int input){ return String.valueOf(input);}
 }
