@@ -1,11 +1,5 @@
 package view;
 
-import domain.Giveaway;
-import domain.date.Day;
-import domain.event.ChristmasEvent;
-import domain.event.Event;
-import domain.event.SpecialEvent;
-import domain.event.WeekendEvent;
 import messages.EventMessage;
 
 public class OutputView {
@@ -15,9 +9,10 @@ public class OutputView {
     private final static String MONEY_SYMBOL = "원";
     public static final String THOUSAND_SEPARATOR = ",";
     public static final String BENEFITS_PREFIX = "-";
+    public static final String SEPARATOR = ": ";
 
     public void printOrderMenu(String menu, String count) {
-        System.out.println(menu + " " + count + COUNT_SYMBOL);
+        System.out.println(menu+ " " + count + COUNT_SYMBOL);
     }
 
     public void printPrice(String price) {
@@ -29,6 +24,7 @@ public class OutputView {
             System.out.println(EventMessage.NOT_EXIST);
             return;
         }
+        System.out.print(event + SEPARATOR);
         printEventPrice(price);
     }
 
@@ -40,20 +36,25 @@ public class OutputView {
         System.out.println(BENEFITS_PREFIX + addThousandSeparator(price) + MONEY_SYMBOL);
     }
 
-    public void printGiveaway(String giveaway) {
-        if (giveaway == null) {
+    public void printGiveaway(String giveaway, String count) {
+        if (giveaway.equals(EventMessage.NOT_EXIST)) {
             System.out.println(EventMessage.NOT_EXIST);
             return;
         }
-        System.out.println(giveaway);
+        System.out.println(giveaway + " " + count +COUNT_SYMBOL);
     }
-
+    public void printBadge(String badge) {
+        System.out.println(badge);
+    }
 
     public String addThousandSeparator(String priceNumber) {
         return priceNumber.replaceAll("\\B(?=(\\d{3})+(?!\\d))", THOUSAND_SEPARATOR); //3자릿 수 마다 "," 문자 추가
     }
 
     public void printNotice(String message) {
+        System.out.println();
         System.out.println(START_SYMBOL + message + END_SYMBOL);
     }
+
+
 }
