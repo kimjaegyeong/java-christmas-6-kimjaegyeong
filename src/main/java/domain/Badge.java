@@ -6,7 +6,7 @@ public enum Badge {
     STAR("별", 5000),
     TREE("트리", 10000),
     SANTA("산타", 20000),
-    NOT("NOT", 0);
+    NOT("없음", 0);
 
     private final String name;
     private final int price;
