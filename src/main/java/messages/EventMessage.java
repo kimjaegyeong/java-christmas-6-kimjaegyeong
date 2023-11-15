@@ -6,6 +6,5 @@ public class EventMessage {
     public final static String WEEKEND_EVENT_MESSAGE = "주말 할인";
     public final static String SPECIAL_EVENT_MESSAGE= "특별 할인";
     public final static String GIVEAWAY_EVENT_MESSAGE = "증정 이벤트";
-    public final static String EVENT_BADGE_MASSAGE = "12월 이벤트 배지";
     public final static String NOT_EXIST = "없음";
 }
